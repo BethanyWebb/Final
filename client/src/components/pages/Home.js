@@ -8,7 +8,7 @@ export default function Home() {
             <div className="basics">
                 <h1>Welcome to Chicken Tinder - Or header here instead</h1>
                 <h2>Description Here</h2>
-                <h3>Please log in or <a href="/signup">sign up</a></h3>
+                <h3>Please log in or <a href="/setup">sign up</a></h3>
                 <form>
                     <input type="email" placeholder="Email"></input><br />
                     <input type="password" placeholder="Password"></input><br />
