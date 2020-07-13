@@ -16,6 +16,7 @@ export default function Setup() {
                 </form>
                 <a href="/"><button>Home</button></a>
             </div>
+            <br /><a href="/user">Temp link to user</a>
             <Footer />
         </div>
     )

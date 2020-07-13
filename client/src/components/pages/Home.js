@@ -14,6 +14,7 @@ export default function Home() {
                     <input type="password" placeholder="Password"></input><br />
                     <button>Log in</button>
                 </form>
+                <br /><a href="/user">Temp link to user</a>
             </div>
             <Footer />
         </div>
