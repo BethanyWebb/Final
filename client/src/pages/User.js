@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from "../Footer.js";
-import "../styles/User.css";
+import Footer from "../components/Footer/Footer";
+import "../styles/user.css";
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 
 export default function User() {
