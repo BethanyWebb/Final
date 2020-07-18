@@ -29,5 +29,5 @@ app.use(passport.initialize());
 app.use("/api/users", Users);
 
 // set up port and shows when it runs
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 app.listen(port, () => console.log("Listening on port", port));
