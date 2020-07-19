@@ -29,7 +29,7 @@ class Home extends Component {
         }
         // console.log(this.userInfo);
         // return this.userInfo;
-        API.logIn(this.state.userInfo)
+        API.logIn(this.userInfo)
         .then(function() {
             window.location.replace("/user")
         })
