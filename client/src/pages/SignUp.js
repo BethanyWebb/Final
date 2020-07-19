@@ -31,7 +31,7 @@ class SignUp extends Component {
         }
         // console.log(this.userData);
         // return this.userData;
-        API.newUser(this.state.userData)
+        API.newUser(this.userData)
         .then(function() {
             window.location.replace("/")
         })
