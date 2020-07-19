@@ -1,41 +1,65 @@
-import React from 'react';
+import React, { Component } from 'react';
+import SignUpForm from "../components/SignUpForm/SignUpForm";
 import Footer from "../components/Footer/Footer";
 import "../styles/setup.css";
+import API from "../utils/API";
 
-export default function Setup() {
+class SignUp extends Component {
+    state = {
+        name: "",
+        email: "",
+        password: "",
+        userData: {}
+    };
+
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+            [name]: value
+        });
+    };
+
+    onSubmit = event => {
+        event.preventDefault();
+        if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
+            return;
+        }
+        this.userData = {
+            name: this.state.name,
+            email: this.state.email,
+            password: this.state.password
+        }
+        // console.log(this.userData);
+        // return this.userData;
+        API.newUser(this.userData)
+        .then(function() {
+            window.location.replace("/")
+        })
+        .catch((err) => console.log(err))
+        
+    };
+
+render() {
     return (
-        <div>
-            <div className="basics">
-                <h1>Welcome to Chicken Tinder</h1>
-                <h2>Please Create Your Profile</h2>
-                <form>
-                    <input
-                        value=""
-                        name="Name"
-                        onChange="" 
-                        type="text" 
-                        placeholder="Name" />
-                        <br />
-                    <input
-                        value=""
-                        name="email"
-                        onChange="" 
-                        type="email" 
-                        placeholder="Email" />
-                        <br />
-                    <input
-                        value=""
-                        name="password"
-                        onChange="" 
-                        type="password" 
-                        placeholder="Password" />
-                        <br />
-                    <button>Submit</button>
-                </form>
-                <a href="/"><button>Home</button></a>
+            <div>
+                <div className="basics">
+                    <h1>Welcome to Chicken Tinder</h1>
+                    <h2>Please Create Your Profile</h2>
+                    <SignUpForm 
+                        name={this.state.name} 
+                        email={this.state.email} 
+                        password={this.state.password}
+                        handleInputChange={this.handleInputChange}
+                        onSubmit={this.onSubmit}
+                    />
+                    <a href="/"><button>Home</button></a>
+                    <br /><a href="/user">Temp link to user</a>
+                </div>
+                <Footer />
             </div>
-            <br /><a href="/user">Temp link to user</a>
-            <Footer />
-        </div>
-    )
+            )
+
+    }
 }
+
+export default SignUp;
