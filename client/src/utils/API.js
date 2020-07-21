@@ -8,5 +8,8 @@ export default {
     // LogIn post call
     logIn: function(userInfo) {
         return axios.post("/api/users/login", userInfo)
+    },
+    findRestaurant: function() {
+        return axios.get("/api/restaurantCity")
     }
 };
