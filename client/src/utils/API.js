@@ -9,7 +9,4 @@ export default {
     logIn: function(userInfo) {
         return axios.post("/api/users/login", userInfo)
     },
-    findRestaurant: function() {
-        return axios.get("/api/restaurantCity")
-    }
 };
