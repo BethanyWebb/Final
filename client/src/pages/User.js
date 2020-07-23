@@ -12,7 +12,12 @@ const logOut = function(){
     window.location.replace("/")
 }
 
+const noLogin = () => {
+    window.location.replace("/");
+}
+
 export default function User() {
+    if(localStorage.getItem('jwt')) {
     return (
         <div>
             <div className="basics">
@@ -50,4 +55,13 @@ export default function User() {
             <Footer />
         </div>
     )
-}
+} else 
+return (
+    <div className="basics">
+        <h1>You need to be logged in!</h1>
+        <h5>Click the button to be redirected back to the home page.<br />
+            There you can login, or create an account.</h5>
+        <button onClick={noLogin}>Home</button>
+    </div>
+)
+} 
