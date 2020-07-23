@@ -29,7 +29,7 @@ router.post("/login", (req, res) => {
                     payload,
                     keys.secretOrKey,
                     {
-                        expiresIn: 900
+                        expiresIn: 900000
                     },
                     (err, token) => {
                         res.json({
