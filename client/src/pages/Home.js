@@ -30,7 +30,9 @@ class Home extends Component {
         // console.log(this.userInfo);
         // return this.userInfo;
         API.logIn(this.userInfo)
-        .then(function() {
+        .then(function(jwt) {
+            // console.log(response.data.token)
+            localStorage.setItem('jwt', jwt.data.token)
             window.location.replace("/user")
         })
         .catch((err) => console.log(err))
