@@ -3,6 +3,15 @@ import Footer from "../components/Footer/Footer";
 import "../styles/user.css";
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 
+const clearLocal = function(keyVal) {
+    window.localStorage.removeItem(keyVal);
+}
+
+const logOut = function(){
+    clearLocal('jwt')
+    window.location.replace("/")
+}
+
 export default function User() {
     return (
         <div>
@@ -35,7 +44,7 @@ export default function User() {
                     </FormGroup>
                     </div>
                 </Form>
-                <button>Sign Out</button>
+                <button onClick={logOut}>Sign Out</button>
                 <br /><a href="/">Temp link to home</a>
             </div>
             <Footer />
