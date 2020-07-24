@@ -3,6 +3,21 @@ import Footer from "../components/Footer/Footer";
 import "../styles/user.css";
 import { Form, FormGroup, Label, Input } from 'reactstrap';
 
+const jwtDecode = require('jwt-decode');
+
+let userToken;
+
+const getToken = function() {
+    userToken = window.localStorage.getItem('jwt')
+    userToken = userToken.replace(/Bearer token: /, '')
+    console.log(userToken)
+    const decoded = jwtDecode(userToken);
+    console.log(decoded);
+    console.log(decoded.name);
+    userToken = decoded;
+    return userToken
+}
+
 const clearLocal = function(keyVal) {
     window.localStorage.removeItem(keyVal);
 }
@@ -50,6 +65,7 @@ export default function User() {
                     </div>
                 </Form>
                 <button onClick={logOut}>Sign Out</button>
+                <button onClick={getToken}>Test Button</button>
                 <br /><a href="/">Temp link to home</a>
             </div>
             <Footer />
