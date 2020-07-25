@@ -75,4 +75,23 @@ router.post("/register", (req, res) => {
     .catch((err) => console.log(err));
 })
 
-module.exports = router
+// Get request for full info on user (password stays hashed)
+// Needs to be queried with just the id
+// personal working example http://localhost:3001/api/users/info/5f10a3f7cf540508fc41558f
+router.get("/info/:id", function(req, res) {
+    Users.findById(req.params.id)
+    .then(userInfo => res.json(userInfo))
+    .catch(err => res.status(422).json(err));
+});
+
+// This will let us add to and then update a user object 
+// not working yet
+router.put("/update/:id", function(req, res) {
+    Users.findByIdAndUpdate(
+        req.params.id, 
+        { $push: [req.body] }, { new: true, runValidators: true })
+    .then(newInfo => res.json(newInfo))
+    .catch(err => res.status(422).json(err));
+});
+
+module.exports = router;
