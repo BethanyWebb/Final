@@ -5,8 +5,7 @@ import Home from "./pages/Home.js";
 import SignUp from "./pages/SignUp.js";
 import User from "./pages/User.js";
 import Choices from "./pages/Choices.js";
-
-
+import RestaurantCard from "./components/Card/Card";
 function App() {
   return (
     <Router>
@@ -15,9 +14,9 @@ function App() {
         <Route exact path="/signup" component={SignUp} />
         <Route exact path="/user" component={User} />
         <Route exact path="/choices" component={Choices} />
+        <Route exact path="/card" component={RestaurantCard} />
       </div>
     </Router>
   );
 }
-
 export default App;
