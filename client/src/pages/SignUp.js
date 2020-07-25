@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import "../styles/setup.css";
 import API from "../utils/API";
 
+// Uses state to make the forms work right
 class SignUp extends Component {
     state = {
         name: "",
@@ -12,6 +13,7 @@ class SignUp extends Component {
         userData: {}
     };
 
+// This deals with each change from a value on the form
     handleInputChange = event => {
         const { name, value } = event.target;
         this.setState({
@@ -19,6 +21,11 @@ class SignUp extends Component {
         });
     };
 
+// This looks for an event "submit button click". 
+// It checks if the inputs have value and does nothing if one is empty.
+// If there are values it puts them into an object and that is passed into an API call.
+// If that is successful, a new user is put in the database 
+// then the page redirects for them to sign in
     onSubmit = event => {
         event.preventDefault();
         if (this.state.name === "" || this.state.email === "" || this.state.password === "") {
@@ -39,6 +46,7 @@ class SignUp extends Component {
         
     };
 
+// State and functions are passed to/from the sign up form component
 render() {
     return (
             <div>
