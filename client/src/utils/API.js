@@ -9,4 +9,8 @@ export default {
     logIn: function(userInfo) {
         return axios.post("/api/users/login", userInfo)
     },
+    // SignUp post call
+    getInfo: function(id) {
+        return axios.get("/api/users/info/" + id)
+    },
 };
