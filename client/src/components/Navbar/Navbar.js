@@ -20,6 +20,8 @@ function MyNavbar() {
                             <ReactBootStrap.NavDropdown.Item href="#action/3.3" target="_blank">Brandon Chontos</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Divider />
                             <ReactBootStrap.NavDropdown.Item href="https://joshua-brooks-portfolio.herokuapp.com/" target="_blank">Joshua Brooks</ReactBootStrap.NavDropdown.Item>
+                            <ReactBootStrap.NavDropdown.Divider />
+                            <ReactBootStrap.NavDropdown.Item href="https://github.com/BethanyWebb/Final" target="_blank">Our App's Repository</ReactBootStrap.NavDropdown.Item>
                         </ReactBootStrap.NavDropdown>
                     </ReactBootStrap.Nav>
                     {/* <ReactBootStrap.Nav>
