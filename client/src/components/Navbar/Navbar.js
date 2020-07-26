@@ -17,7 +17,7 @@ function MyNavbar() {
                             <ReactBootStrap.NavDropdown.Divider />
                             <ReactBootStrap.NavDropdown.Item href="#action/3.2" target="_blank">Bethany Webb</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Divider />
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.3" target="_blank">Brandon Chantos</ReactBootStrap.NavDropdown.Item>
+                            <ReactBootStrap.NavDropdown.Item href="#action/3.3" target="_blank">Brandon Chontos</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Divider />
                             <ReactBootStrap.NavDropdown.Item href="https://joshua-brooks-portfolio.herokuapp.com/" target="_blank">Joshua Brooks</ReactBootStrap.NavDropdown.Item>
                         </ReactBootStrap.NavDropdown>
