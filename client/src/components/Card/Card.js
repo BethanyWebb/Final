@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import API from '../../utils/API';
 import axios from "axios";
+
 const RestaurantCard = () => {
     const [image, setImage] = useState();
     const [restaurants, setRestaurants] = useState([]);
@@ -29,14 +30,14 @@ const RestaurantCard = () => {
     // useEffect can look for any change of state on the page and act accordingly
     
 return (
-        <div className="card">
-          <form onSubmit={handleSubmit}>
-            <input 
+        <div style={{ width: '18rem' }}>
+          <form style={{ width: '18rem' }} onSubmit={handleSubmit}>
+            <input style={{ width: '9rem' }}
             placeholder= "00000"
             value = {zipcode}
             onChange={e => setZipcode(e.target.value)}
             type="text"></input>
-        <input type="submit" value="submit" />
+        <input style={{ width: '9rem' }} type="submit" value="submit" />
         </form>
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" />
