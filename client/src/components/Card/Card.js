@@ -50,14 +50,15 @@ return (
           <Card.Body>
             <Card.Link href="#">Card Link</Card.Link>
             <Card.Link href="#">Another Link</Card.Link>
-            <button onClick={() => newEats()}   id="like" className="btn btn-danger mx-4">
+            <button onClick={() => newEats()}   id="like" className="btn btn-success mx-4">
                 like
               </button>
-              <button onClick={() => newEats()} id="dislike" className="btn btn-success mx-4">
+              <button onClick={() => newEats()} id="dislike" className="btn btn-danger mx-4">
                 dislike
               </button>
         </Card.Body>
       </Card>
     </div>
 )}
+
 export default RestaurantCard;
