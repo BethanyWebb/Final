@@ -8,7 +8,7 @@
     height: 60px;
   
     /* Visual */
-    background-color: rgb(35, 120, 199);
+    background-color: rgb(53, 56, 58);
 
     font-family: Georgia, Times, "Times New Roman", serif;
   }
@@ -23,11 +23,11 @@
     color: #fff;
   }
   
-  .two-toned-footer-color {
+  /* .two-toned-footer-color { */
     /* Box-model */
-    height: 6px;
-    padding-top: 3px;
+    /* height: 6px;
+    padding-top: 3px; */
   
     /* Visual */
-    background-color: blue;
-  }
+    /* background-color: rgb(12, 12, 12); */
+  /* } */
