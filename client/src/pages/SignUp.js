@@ -3,6 +3,7 @@ import SignUpForm from "../components/SignUpForm/SignUpForm";
 import Footer from "../components/Footer/Footer";
 import "../styles/setup.css";
 import API from "../utils/API";
+import MyNavbar from "../components/Navbar/Navbar";
 
 // Uses state to make the forms work right
 class SignUp extends Component {
@@ -50,6 +51,7 @@ class SignUp extends Component {
 render() {
     return (
             <div>
+                <MyNavbar />
                 <div className="basics">
                     <h1>Welcome to Chicken Tinder</h1>
                     <h2>Please Create Your Profile</h2>

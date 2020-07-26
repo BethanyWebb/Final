@@ -1,8 +1,10 @@
 import React from 'react';
 import Footer from "../components/Footer/Footer";
 import "../styles/user.css";
-import { Form, FormGroup, Label, Input } from 'reactstrap';
+// import { Form, FormGroup, Label, Input } from 'reactstrap';
 import API from '../utils/API';
+import Card from '../components/Card/Card';
+import MyNavbar from "../components/Navbar/Navbar";
 
 
 // Module for decoding json web tokens
@@ -69,10 +71,11 @@ export default function User() {
 wholeUserInfo();
     return (
         <div>
+            <MyNavbar />
             <div className="basics">
     <h1>Hello {userTokenName}!</h1>
-                <p>A few questions and your dining dilema will be fixed</p>
-                <Form>
+                <p>Enter your Zipcode and select restaurants that interest you.</p>
+                {/* <Form>
                     <div className="divSpace">
                     <FormGroup>
                         <Label for="exampleSelect">Which friend will you be eating with?</Label>
@@ -97,8 +100,9 @@ wholeUserInfo();
                         </Input>
                     </FormGroup>
                     </div>
-                </Form>
-                <button onClick={logOut}>Sign Out</button>
+                </Form> */}
+                <Card />
+                <button className="button" onClick={logOut}>Sign Out</button>
                 <button onClick={wholeUserInfo}>Test Button</button>
                 <br /><a href="/">Temp link to home</a>
             </div>
@@ -107,11 +111,15 @@ wholeUserInfo();
         )
     } else 
     return (
-        <div className="basics">
-            <h1>You need to be logged in!</h1>
-            <h5>Click the button to be redirected back to the home page.<br />
-                There you can login, or create an account.</h5>
-            <button onClick={noLogin}>Home</button>
+        <div>
+            <MyNavbar />
+                <div className="basics">
+                    <h1>You need to be logged in!</h1>
+                    <h5>Click the button to be redirected back to the home page.<br />
+                        There you can login, or create an account.</h5>
+                    <button onClick={noLogin}>Home</button>
+                </div>
+            <Footer />
         </div>
     )
 } 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import API from '../../utils/API';
 import axios from "axios";
+
 const RestaurantCard = () => {
     const [image, setImage] = useState();
     const [restaurants, setRestaurants] = useState([]);
@@ -29,14 +30,14 @@ const RestaurantCard = () => {
     // useEffect can look for any change of state on the page and act accordingly
     
 return (
-        <div className="card">
-          <form onSubmit={handleSubmit}>
-            <input 
+        <div style={{ width: '18rem' }}>
+          <form style={{ width: '18rem' }} onSubmit={handleSubmit}>
+            <input style={{ width: '9rem' }}
             placeholder= "00000"
             value = {zipcode}
             onChange={e => setZipcode(e.target.value)}
             type="text"></input>
-        <input type="submit" value="submit" />
+        <input style={{ width: '9rem' }} type="submit" value="submit" />
         </form>
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" />
@@ -49,14 +50,15 @@ return (
           <Card.Body>
             <Card.Link href="#">Card Link</Card.Link>
             <Card.Link href="#">Another Link</Card.Link>
-            <button onClick={() => newEats()}   id="like" className="btn btn-danger mx-4">
+            <button onClick={() => newEats()}   id="like" className="btn btn-success mx-4">
                 like
               </button>
-              <button onClick={() => newEats()} id="dislike" className="btn btn-success mx-4">
+              <button onClick={() => newEats()} id="dislike" className="btn btn-danger mx-4">
                 dislike
               </button>
         </Card.Body>
       </Card>
     </div>
 )}
+
 export default RestaurantCard;
