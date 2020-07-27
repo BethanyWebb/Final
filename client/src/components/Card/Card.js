@@ -15,9 +15,12 @@ const RestaurantCard = () => {
         .then(res => {
           console.log(res.data.restaurants)
             setRestaurants(res.data.restaurants)
-            
+            // The response is stringified and put in local storage
+            localStorage.setItem("response", JSON.stringify(res.data.restaurants))
+            // This is an example of how to get it back out just like when it came back from the API call
+            console.log(JSON.parse(localStorage.getItem("response")))
         })
-        .then(x => console.log(restaurants))
+        // .then(x => console.log(restaurants))
         .catch(error => console.log(error))
         
     }
