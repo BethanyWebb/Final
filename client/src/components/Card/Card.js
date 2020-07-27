@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import API from '../../utils/API';
 import axios from "axios";
-
 const RestaurantCard = () => {
     const [image, setImage] = useState();
-    const [restaurants, setRestaurants] = useState([]);
+    const [restaurants, setRestaurants] = useState("");
     const [zipcode, setZipcode] = useState("");
     const newEats = () => {
       console.log(zipcode)
@@ -42,7 +41,7 @@ return (
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" />
           <Card.Body>
-            <Card.Title>title</Card.Title>
+            <Card.Title>Title</Card.Title>
             <Card.Text>
             example text
             </Card.Text>
@@ -60,5 +59,4 @@ return (
       </Card>
     </div>
 )}
-
 export default RestaurantCard;
