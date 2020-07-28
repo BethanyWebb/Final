@@ -14,13 +14,12 @@ const RestaurantCard = () => {
   const newEats = () => {
     //get call from opentable with zip code query
     // write a post request function so that when like button is hit, it posts id to like schema and re renders
-    // @TODO move to API file
-    axios.get("https://opentable.herokuapp.com/api/restaurants?zip=" + zipcode.toString())
+    API.getNewEats(zipcode)
       .then(res => {
         setRestaurants(res.data.restaurants)
         setLoaded(true);
       })
-      .catch(error => console.log(error))
+      .catch(error => console.log(error));
   }
 
   const handleSubmit = event => {
@@ -30,7 +29,6 @@ const RestaurantCard = () => {
 
   const handleRoundCompleted = () => {
     if(currentRoundCardCount === 4) {
-        alert("you're done");
         history.push("/matches");
         return true;
     }

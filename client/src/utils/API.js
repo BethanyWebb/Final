@@ -14,6 +14,10 @@ export default {
     getInfo: function(id) {
         return axios.get("/api/users/info/" + id)
     },
+    // SignUp post call
+    getNewEats: function(zipcode) {
+        return axios.get("https://opentable.herokuapp.com/api/restaurants?zip=" + zipcode.toString())
+    },
     // Add "like" call
     addLike: function(likeInfo) {
         const token = getJWT();
