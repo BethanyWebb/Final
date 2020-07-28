@@ -15,7 +15,7 @@ function MyNavbar() {
                         <ReactBootStrap.NavDropdown title="About Us" id="collasible-nav-dropdown">
                             <ReactBootStrap.NavDropdown.Item href="#action/3.1" target="_blank">Stephen Settle</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Divider />
-                            <ReactBootStrap.NavDropdown.Item href="#action/3.2" target="_blank">Bethany Webb</ReactBootStrap.NavDropdown.Item>
+                            <ReactBootStrap.NavDropdown.Item href="https://reactportfolio14.herokuapp.com/" target="_blank">Bethany Webb</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Divider />
                             <ReactBootStrap.NavDropdown.Item href="#action/3.3" target="_blank">Brandon Chontos</ReactBootStrap.NavDropdown.Item>
                             <ReactBootStrap.NavDropdown.Divider />
