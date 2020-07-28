@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import API from '../../utils/API';
+// import API from '../../utils/API';
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -19,6 +19,7 @@ const RestaurantCard = () => {
         setRestaurants(res.data.restaurants)
         setLoaded(true);
       })
+
       .catch(error => console.log(error));
   }
 
@@ -64,6 +65,7 @@ const RestaurantCard = () => {
     return restaurants[Math.floor(Math.random() * restaurants.length)];
   }
 
+
   const randomRestaurant = getRandomRestaurant();
 
   return (
@@ -82,11 +84,15 @@ const RestaurantCard = () => {
           <Card.Body>
             <Card.Title>{randomRestaurant.name}</Card.Title>
             <Card.Text>
-              {randomRestaurant.city}
+              Address:<br/>{randomRestaurant.address}<br/><br/>
+              Phone Number:<br/>{randomRestaurant.phone}
             </Card.Text>
           </Card.Body>
           <Card.Body>
-            <Card.Link href="#">Card Link</Card.Link>
+            <div>
+              <Card.Link href={randomRestaurant.reserve_url}>Make Reservations</Card.Link>
+            </div><br/>
+             <div>
             <Card.Link href="#">Another Link</Card.Link>
             <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
               like
@@ -99,9 +105,9 @@ const RestaurantCard = () => {
         :
         <div></div>
       }
-
     </div>
   )
+  
 }
 
 export default RestaurantCard;
