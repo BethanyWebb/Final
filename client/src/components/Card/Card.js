@@ -2,25 +2,22 @@ import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
 import API from '../../utils/API';
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const RestaurantCard = () => {
-  const [image, setImage] = useState();
+  const history = useHistory();
   const [restaurants, setRestaurants] = useState([]);
   const [zipcode, setZipcode] = useState("");
   const [loaded, setLoaded] = useState(false);
+  const [currentRoundCardCount, setCurrentRoundCardCount] = useState(0);
 
   const newEats = () => {
-    console.log(zipcode)
     //get call from opentable with zip code query
     // write a post request function so that when like button is hit, it posts id to like schema and re renders
+    // @TODO move to API file
     axios.get("https://opentable.herokuapp.com/api/restaurants?zip=" + zipcode.toString())
       .then(res => {
-        console.log(res.data.restaurants)
         setRestaurants(res.data.restaurants)
-        // The response is stringified and put in local storage
-        localStorage.setItem("response", JSON.stringify(res.data.restaurants))
-        // This is an example of how to get it back out just like when it came back from the API call
-        console.log(JSON.parse(localStorage.getItem("response")))
         setLoaded(true);
       })
       .catch(error => console.log(error))
@@ -31,8 +28,22 @@ const RestaurantCard = () => {
     newEats()
   }
 
+  const handleRoundCompleted = () => {
+    if(currentRoundCardCount === 4) {
+        alert("you're done");
+        history.push("/matches");
+        return true;
+    }
+  }
+
   const handleLikeClicked = randomRestaurant => {
-    console.log(randomRestaurant)
+    if(handleRoundCompleted()) {
+      return;
+    }
+
+    setCurrentRoundCardCount(currentRoundCardCount+1);
+    console.log(currentRoundCardCount);
+
     const likeInfo = {
       restaurantID: randomRestaurant.id
     };
@@ -40,7 +51,18 @@ const RestaurantCard = () => {
     API.addLike(likeInfo).then(() => newEats())
   };
 
-  function getRandomRestaurant() {
+  const handleDislikeClicked = () => {
+    if(handleRoundCompleted()) {
+      return;
+    }
+
+    setCurrentRoundCardCount(currentRoundCardCount+1);
+    console.log(currentRoundCardCount);
+
+    newEats();
+  }
+
+  const getRandomRestaurant = () => {
     return restaurants[Math.floor(Math.random() * restaurants.length)];
   }
 
@@ -71,7 +93,7 @@ const RestaurantCard = () => {
             <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
               like
             </button>
-            <button onClick={() => newEats()} id="dislike" className="btn btn-danger mx-4">
+            <button onClick={() => handleDislikeClicked()} id="dislike" className="btn btn-danger mx-4">
               dislike
             </button>
           </Card.Body>

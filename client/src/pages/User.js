@@ -42,7 +42,7 @@ const getTokenName = function() {
 // API call made using the id from the token to get the user's info
 const getUserInfo = function(userToken) {
     API.getInfo(userToken)
-    .then(infoObj => console.log(infoObj.data))
+    .then(infoObj => {})
     .catch((err) => console.log(err))
 }
 

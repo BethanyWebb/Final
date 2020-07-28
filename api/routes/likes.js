@@ -7,8 +7,6 @@ const passport = require("passport");
 // not working yet
 router.post("/", passport.authenticate(
     'jwt', { session: false } ), function(req, res) {
-    console.log(req.body);
-    console.log(req.user);
     const {body, user} = req;
     const {email} = user;
 

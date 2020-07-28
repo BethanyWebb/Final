@@ -1,4 +1,5 @@
 import axios from "axios";
+import {getJWT} from './token';
 
 export default {
     // SignUp post call
@@ -15,7 +16,7 @@ export default {
     },
     // Add "like" call
     addLike: function(likeInfo) {
-        const token = localStorage.getItem('jwt').split('Bearer token: ')[1];
+        const token = getJWT();
 
         const config = {
             headers: { Authorization: `Bearer ${token}` }
@@ -24,6 +25,20 @@ export default {
         return axios.post( 
           '/api/likes',
           likeInfo,
+          config
+        );
+    },
+    // Get matches call
+    getMatches: function(likeInfo) {
+        const token = getJWT();
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        
+        return axios.get( 
+          '/api/matches',
+          {},
           config
         );
     }
