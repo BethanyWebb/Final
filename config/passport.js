@@ -12,7 +12,6 @@ opts.secretOrKey = keys.secretOrKey;
 
 // lets passport make a token based off of Users model
 module.exports = passport => {
-
     passport.use(
         new jwtStrategy(opts, (jwtPayload, done) => {
             Users.findById(jwtPayload.id)

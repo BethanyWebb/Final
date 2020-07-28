@@ -8,6 +8,7 @@ const RestaurantCard = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [zipcode, setZipcode] = useState("");
   const [loaded, setLoaded] = useState(false);
+
   const newEats = () => {
     console.log(zipcode)
     //get call from opentable with zip code query
@@ -22,17 +23,28 @@ const RestaurantCard = () => {
         console.log(JSON.parse(localStorage.getItem("response")))
         setLoaded(true);
       })
-      // .then(x => console.log(restaurants))
       .catch(error => console.log(error))
+  }
 
-  }
   const handleSubmit = event => {
-    newEats()
     event.preventDefault()
-    console.log("submitting")
+    newEats()
   }
-  useEffect(() => { console.log(zipcode) }, [zipcode])
-  // useEffect can look for any change of state on the page and act accordingly
+
+  const handleLikeClicked = randomRestaurant => {
+    console.log(randomRestaurant)
+    const likeInfo = {
+      restaurantID: randomRestaurant.id
+    };
+
+    API.addLike(likeInfo).then(() => newEats())
+  };
+
+  function getRandomRestaurant() {
+    return restaurants[Math.floor(Math.random() * restaurants.length)];
+  }
+
+  const randomRestaurant = getRandomRestaurant();
 
   return (
     <div style={{ width: '18rem' }}>
@@ -48,20 +60,20 @@ const RestaurantCard = () => {
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" />
           <Card.Body>
-            <Card.Title>{restaurants[2].name}</Card.Title>
+            <Card.Title>{randomRestaurant.name}</Card.Title>
             <Card.Text>
-              example text
+              {randomRestaurant.city}
             </Card.Text>
           </Card.Body>
           <Card.Body>
             <Card.Link href="#">Card Link</Card.Link>
             <Card.Link href="#">Another Link</Card.Link>
-            <button onClick={() => newEats()} id="like" className="btn btn-success mx-4">
+            <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
               like
-              </button>
+            </button>
             <button onClick={() => newEats()} id="dislike" className="btn btn-danger mx-4">
               dislike
-              </button>
+            </button>
           </Card.Body>
         </Card>
         :

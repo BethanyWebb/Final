@@ -10,6 +10,7 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 // provides routes for passport
 const Users = require("./api/routes/users");
+const Likes = require("./api/routes/Likes");
 
 // Creates express app and configures middleware needed for authentication
 const app = express();
@@ -27,6 +28,7 @@ mongoose.connect(db)
 require("./config/passport") (passport)
 app.use(passport.initialize());
 app.use("/api/users", Users);
+app.use("/api/likes", Likes);
 
 // set up port and shows when it runs
 const port = process.env.PORT || 3001;
