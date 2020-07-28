@@ -40,11 +40,11 @@ const getTokenName = function() {
 };
 
 // API call made using the id from the token to get the user's info
-// const getUserInfo = function(userToken) {
-//     API.getInfo(userToken)
-//     .then(infoObj => console.log(infoObj.data))
-//     .catch((err) => console.log(err))
-// }
+const getUserInfo = function(userToken) {
+    API.getInfo(userToken)
+    .then(infoObj => {})
+    .catch((err) => console.log(err))
+}
 
 // Get token id val and pass it in to api call
 const wholeUserInfo = function() {

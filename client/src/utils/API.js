@@ -1,4 +1,5 @@
 import axios from "axios";
+import {getJWT} from './token';
 
 export default {
     // SignUp post call
@@ -13,4 +14,36 @@ export default {
     getInfo: function(id) {
         return axios.get("/api/users/info/" + id)
     },
+    // SignUp post call
+    getNewEats: function(zipcode) {
+        return axios.get("https://opentable.herokuapp.com/api/restaurants?zip=" + zipcode.toString())
+    },
+    // Add "like" call
+    addLike: function(likeInfo) {
+        const token = getJWT();
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        
+        return axios.post( 
+          '/api/likes',
+          likeInfo,
+          config
+        );
+    },
+    // Get matches call
+    getMatches: function(likeInfo) {
+        const token = getJWT();
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        
+        return axios.get( 
+          '/api/matches',
+          {},
+          config
+        );
+    }
 };
