@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from "../components/Footer/Footer";
 import "../styles/user.css";
 // import { Form, FormGroup, Label, Input } from 'reactstrap';
-import API from '../utils/API';
+// import API from '../utils/API';
 import Card from '../components/Card/Card';
 import MyNavbar from "../components/Navbar/Navbar";
 
@@ -40,16 +40,16 @@ const getTokenName = function() {
 };
 
 // API call made using the id from the token to get the user's info
-const getUserInfo = function(userToken) {
-    API.getInfo(userToken)
-    .then(infoObj => console.log(infoObj.data))
-    .catch((err) => console.log(err))
-}
+// const getUserInfo = function(userToken) {
+//     API.getInfo(userToken)
+//     .then(infoObj => console.log(infoObj.data))
+//     .catch((err) => console.log(err))
+// }
 
 // Get token id val and pass it in to api call
 const wholeUserInfo = function() {
     getToken();
-    getUserInfo(userToken);
+    // getUserInfo(userToken);
     getTokenName();
 }
 
