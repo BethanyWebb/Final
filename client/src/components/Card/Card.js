@@ -1,38 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import Card from 'react-bootstrap/Card';
-import API from '../../utils/API';
+// import API from '../../utils/API';
 import axios from "axios";
 
 const RestaurantCard = () => {
-  const [image, setImage] = useState();
+  // const [image, setImage] = useState();
   const [restaurants, setRestaurants] = useState([]);
   const [zipcode, setZipcode] = useState("");
   const [loaded, setLoaded] = useState(false);
+
   const newEats = () => {
-    console.log(zipcode)
-    //get call from opentable with zip code query
+    // get call from opentable with zip code query
     // write a post request function so that when like button is hit, it posts id to like schema and re renders
     axios.get("https://opentable.herokuapp.com/api/restaurants?zip=" + zipcode.toString())
       .then(res => {
         console.log(res.data.restaurants)
         setRestaurants(res.data.restaurants)
-        // The response is stringified and put in local storage
-        localStorage.setItem("response", JSON.stringify(res.data.restaurants))
-        // This is an example of how to get it back out just like when it came back from the API call
-        console.log(JSON.parse(localStorage.getItem("response")))
         setLoaded(true);
       })
-      // .then(x => console.log(restaurants))
       .catch(error => console.log(error))
-
   }
+
   const handleSubmit = event => {
     newEats()
     event.preventDefault()
     console.log("submitting")
   }
-  useEffect(() => { console.log(zipcode) }, [zipcode])
+
   // useEffect can look for any change of state on the page and act accordingly
+  useEffect(() => { console.log(zipcode) }, [zipcode])
+  
 
   return (
     <div style={{ width: '18rem' }}>
@@ -48,28 +45,35 @@ const RestaurantCard = () => {
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="top" />
           <Card.Body>
-            <Card.Title>{restaurants[2].name}</Card.Title>
+            <Card.Title>{restaurants[1].name}</Card.Title>
             <Card.Text>
-              example text
+              Address:<br/>{restaurants[1].address}<br/><br/>
+              Phone Number:<br/>{restaurants[1].phone}
             </Card.Text>
           </Card.Body>
           <Card.Body>
-            <Card.Link href="#">Card Link</Card.Link>
+            <div>
+              <Card.Link href={restaurants[1].reserve_url}>Make Reservations</Card.Link>
+            </div><br/>
+            {/* <div>
             <Card.Link href="#">Another Link</Card.Link>
-            <button onClick={() => newEats()} id="like" className="btn btn-success mx-4">
-              like
+            </div> */}
+            <div>
+              <button onClick={() => newEats()} id="like" className="btn btn-success mx-4">
+                Like
               </button>
-            <button onClick={() => newEats()} id="dislike" className="btn btn-danger mx-4">
-              dislike
+              <button onClick={() => newEats()} id="dislike" className="btn btn-danger mx-4">
+                Dislike
               </button>
+            </div>
           </Card.Body>
         </Card>
         :
         <div></div>
       }
-
     </div>
   )
+  
 }
 
 export default RestaurantCard;
