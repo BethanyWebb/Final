@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-// import API from '../../utils/API';
-import axios from "axios";
+import API from '../../utils/API';
+// import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const RestaurantCard = () => {
@@ -100,6 +100,7 @@ const RestaurantCard = () => {
             <button onClick={() => handleDislikeClicked()} id="dislike" className="btn btn-danger mx-4">
               dislike
             </button>
+            </div>
           </Card.Body>
         </Card>
         :
