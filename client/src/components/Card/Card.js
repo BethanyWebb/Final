@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import API from '../../utils/API';
-// import axios from "axios";
+import axios from "axios";
 import { useHistory } from "react-router-dom";
 
 const RestaurantCard = () => {
@@ -29,18 +29,18 @@ const RestaurantCard = () => {
   }
 
   const handleRoundCompleted = () => {
-    if(currentRoundCardCount === 4) {
-        history.push("/matches");
-        return true;
+    if (currentRoundCardCount === 4) {
+      history.push("/matches");
+      return true;
     }
   }
 
   const handleLikeClicked = randomRestaurant => {
-    if(handleRoundCompleted()) {
+    if (handleRoundCompleted()) {
       return;
     }
 
-    setCurrentRoundCardCount(currentRoundCardCount+1);
+    setCurrentRoundCardCount(currentRoundCardCount + 1);
     console.log(currentRoundCardCount);
 
     const likeInfo = {
@@ -51,11 +51,11 @@ const RestaurantCard = () => {
   };
 
   const handleDislikeClicked = () => {
-    if(handleRoundCompleted()) {
+    if (handleRoundCompleted()) {
       return;
     }
 
-    setCurrentRoundCardCount(currentRoundCardCount+1);
+    setCurrentRoundCardCount(currentRoundCardCount + 1);
     console.log(currentRoundCardCount);
 
     newEats();
@@ -84,21 +84,21 @@ const RestaurantCard = () => {
           <Card.Body>
             <Card.Title>{randomRestaurant.name}</Card.Title>
             <Card.Text>
-              Address:<br/>{randomRestaurant.address}<br/><br/>
-              Phone Number:<br/>{randomRestaurant.phone}
+              Address:<br />{randomRestaurant.address}<br /><br />
+              Phone Number:<br />{randomRestaurant.phone}
             </Card.Text>
           </Card.Body>
           <Card.Body>
             <div>
               <Card.Link href={randomRestaurant.reserve_url}>Make Reservations</Card.Link>
-            </div><br/>
-             <div>
-            <Card.Link href="#">Another Link</Card.Link>
-            <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
-              like
+            </div><br />
+            <div>
+              <Card.Link href="#">Another Link</Card.Link>
+              <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
+                like
             </button>
-            <button onClick={() => handleDislikeClicked()} id="dislike" className="btn btn-danger mx-4">
-              dislike
+              <button onClick={() => handleDislikeClicked()} id="dislike" className="btn btn-danger mx-4">
+                dislike
             </button>
             </div>
           </Card.Body>
@@ -108,7 +108,7 @@ const RestaurantCard = () => {
       }
     </div>
   )
-  
+
 }
 
 export default RestaurantCard;
