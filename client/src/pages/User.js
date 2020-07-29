@@ -104,8 +104,6 @@ export default function User() {
                 </Form> */}
                     <Card />
                     <button className="button" onClick={logOut}>Sign Out</button>
-                    <button onClick={wholeUserInfo}>Test Button</button>
-                    <br /><a href="/">Temp link to home</a>
                 </div>
                 <Footer />
             </div>

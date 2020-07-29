@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import "../LogInForm/style.css";
 
 export default function LogInForm({ email, password, onSubmit, handleInputChange }) {
     return (
@@ -7,17 +8,17 @@ export default function LogInForm({ email, password, onSubmit, handleInputChange
                 <input
                     value={email}
                     name="email"
-                    onChange={handleInputChange} 
-                    type="email" 
+                    onChange={handleInputChange}
+                    type="email"
                     placeholder="Email" />
-                    <br />
+                <br />
                 <input
                     value={password}
                     name="password"
-                    onChange={handleInputChange} 
-                    type="password" 
+                    onChange={handleInputChange}
+                    type="password"
                     placeholder="Password" />
-                    <br />
+                <br />
                 <button type="submit" onClick={onSubmit}>Log in</button>
             </form>
         </div>
