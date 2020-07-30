@@ -17,6 +17,7 @@ const RestaurantCard = () => {
     API.getNewEats(zipcode)
       .then(res => {
         setRestaurants(res.data.restaurants)
+        localStorage.setItem('restaurants', JSON.stringify(res.data.restaurants));
         setLoaded(true);
       })
 
@@ -56,7 +57,6 @@ const RestaurantCard = () => {
     }
 
     setCurrentRoundCardCount(currentRoundCardCount + 1);
-    console.log(currentRoundCardCount);
 
     newEats();
   }
