@@ -6,6 +6,8 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
+import MyNavbar from "../Navbar/Navbar";
+
 
 export default () => {
     let [loaded, setLoaded] = useState(false);
@@ -68,7 +70,7 @@ export default () => {
         <>
             {
                 loaded && <div className="matches">
-                    <div className="heading">Your matches:</div>
+                    <div className="heading">Your Matches:</div>
                         {processedMatches}
                 </div>
             }

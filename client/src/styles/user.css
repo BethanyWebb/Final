@@ -1,5 +1,9 @@
-.basics {
+.users {
     margin: 15px;
+    color:white;
+    text-align: center;
+    font-family: Georgia, Times, "Times New Roman", serif;
+    text-shadow: 2px 2px black;
 }
 
 .divSpace {
@@ -10,4 +14,6 @@
 .button {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    margin-left: 647px;
+    
 }

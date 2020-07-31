@@ -5,7 +5,8 @@
 }
 
 .matches {
-    color: red;
+    color: black;
+    font-size: larger;
     font-weight: bold;
     display: flex;
     flex-direction: column;

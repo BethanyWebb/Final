@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
+import './Card.css';
 import API from '../../utils/API';
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -69,7 +70,7 @@ const RestaurantCard = () => {
   const randomRestaurant = getRandomRestaurant();
 
   return (
-    <div style={{ width: '18rem' }}>
+    <div className="card" style={{ width: '18rem' }}>
       <form style={{ width: '18rem' }} onSubmit={handleSubmit}>
         <input style={{ width: '9rem' }}
           placeholder="00000"
@@ -79,7 +80,7 @@ const RestaurantCard = () => {
         <input style={{ width: '9rem' }} type="submit" value="submit" />
       </form>
       {loaded ?
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem'}}>
           <Card.Img variant="top" />
           <Card.Body>
             <Card.Title>{randomRestaurant.name}</Card.Title>
@@ -93,7 +94,6 @@ const RestaurantCard = () => {
               <Card.Link href={randomRestaurant.reserve_url}>Make Reservations</Card.Link>
             </div><br />
             <div>
-              <Card.Link href="#">Another Link</Card.Link>
               <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
                 like
             </button>

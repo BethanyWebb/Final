@@ -52,7 +52,7 @@ class Home extends Component {
         return (
             <div>
                 <MyNavbar />
-                <div className="basics">
+                <div className="home">
                     <h1>Welcome to Chicken Tinder</h1>
                     <h3>Please log in or <a href="/signup">sign up</a></h3>
                     <LogInForm
