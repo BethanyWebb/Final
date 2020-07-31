@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
-// import API from '../../utils/API';
+import './Card.css';
+import API from '../../utils/API';
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -17,6 +18,7 @@ const RestaurantCard = () => {
     API.getNewEats(zipcode)
       .then(res => {
         setRestaurants(res.data.restaurants)
+        localStorage.setItem('restaurants', JSON.stringify(res.data.restaurants));
         setLoaded(true);
       })
 
@@ -29,18 +31,18 @@ const RestaurantCard = () => {
   }
 
   const handleRoundCompleted = () => {
-    if(currentRoundCardCount === 4) {
-        history.push("/matches");
-        return true;
+    if (currentRoundCardCount === 4) {
+      history.push("/matches");
+      return true;
     }
   }
 
   const handleLikeClicked = randomRestaurant => {
-    if(handleRoundCompleted()) {
+    if (handleRoundCompleted()) {
       return;
     }
 
-    setCurrentRoundCardCount(currentRoundCardCount+1);
+    setCurrentRoundCardCount(currentRoundCardCount + 1);
     console.log(currentRoundCardCount);
 
     const likeInfo = {
@@ -51,12 +53,11 @@ const RestaurantCard = () => {
   };
 
   const handleDislikeClicked = () => {
-    if(handleRoundCompleted()) {
+    if (handleRoundCompleted()) {
       return;
     }
 
-    setCurrentRoundCardCount(currentRoundCardCount+1);
-    console.log(currentRoundCardCount);
+    setCurrentRoundCardCount(currentRoundCardCount + 1);
 
     newEats();
   }
@@ -69,7 +70,7 @@ const RestaurantCard = () => {
   const randomRestaurant = getRandomRestaurant();
 
   return (
-    <div style={{ width: '18rem' }}>
+    <div className="card" style={{ width: '18rem' }}>
       <form style={{ width: '18rem' }} onSubmit={handleSubmit}>
         <input style={{ width: '9rem' }}
           placeholder="00000"
@@ -79,27 +80,27 @@ const RestaurantCard = () => {
         <input style={{ width: '9rem' }} type="submit" value="submit" />
       </form>
       {loaded ?
-        <Card style={{ width: '18rem' }}>
+        <Card style={{ width: '18rem'}}>
           <Card.Img variant="top" />
           <Card.Body>
             <Card.Title>{randomRestaurant.name}</Card.Title>
             <Card.Text>
-              Address:<br/>{randomRestaurant.address}<br/><br/>
-              Phone Number:<br/>{randomRestaurant.phone}
+              Address:<br />{randomRestaurant.address}<br /><br />
+              Phone Number:<br />{randomRestaurant.phone}
             </Card.Text>
           </Card.Body>
           <Card.Body>
             <div>
               <Card.Link href={randomRestaurant.reserve_url}>Make Reservations</Card.Link>
-            </div><br/>
-             <div>
-            <Card.Link href="#">Another Link</Card.Link>
-            <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
-              like
+            </div><br />
+            <div>
+              <button onClick={() => handleLikeClicked(randomRestaurant)} id="like" className="btn btn-success mx-4">
+                like
             </button>
-            <button onClick={() => handleDislikeClicked()} id="dislike" className="btn btn-danger mx-4">
-              dislike
+              <button onClick={() => handleDislikeClicked()} id="dislike" className="btn btn-danger mx-4">
+                dislike
             </button>
+            </div>
           </Card.Body>
         </Card>
         :
@@ -107,7 +108,7 @@ const RestaurantCard = () => {
       }
     </div>
   )
-  
+
 }
 
 export default RestaurantCard;

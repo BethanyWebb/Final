@@ -32,8 +32,8 @@ export default {
           config
         );
     },
-    // Get matches call
-    getMatches: function(likeInfo) {
+    // Get Likes call
+    getOtherUserLikes: function() {
         const token = getJWT();
 
         const config = {
@@ -41,8 +41,20 @@ export default {
         };
         
         return axios.get( 
-          '/api/matches',
-          {},
+          '/api/likes/not-mine',
+          config
+        );
+    },
+    // Get My Likes call
+    getMyLikes: function() {
+        const token = getJWT();
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` }
+        };
+        
+        return axios.get( 
+          '/api/likes/mine',
           config
         );
     }
