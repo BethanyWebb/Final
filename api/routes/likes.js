@@ -39,4 +39,8 @@ router.post("/", passport.authenticate(
     res.json({});
 });
 
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+
 module.exports = router;
