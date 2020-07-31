@@ -15,13 +15,18 @@ const Matches = require("./api/routes/Matches");
 
 // Creates express app and configures middleware needed for authentication
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static("client/build"));
+}
+
 // Gets url from keys, then connects to database unless there's an error
 const db = require("./config/keys").mongoURL;
-mongoose.connect(db)
+mongoose.connect((process.env.MONGODB_URI || db))
     .then(() => console.log("Connected to database!"))
     .catch((err) => console.log(err))
 
