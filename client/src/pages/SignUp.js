@@ -52,7 +52,7 @@ class SignUp extends Component {
         return (
             <div>
                 <MyNavbar />
-                <div className="basics">
+                <div className="home">
                     <h1>Welcome to Chicken Tinder</h1>
                     <h2>Please Create Your Profile</h2>
                     <SignUpForm
